@@ -3,6 +3,8 @@ package br.com.springbootangular4.rest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,34 +20,23 @@ public class PessoaController implements PessoaResouce{
 	private PessoaService pessoaService;
 
 	@Override
-	public PessoaResponse salvar(PessoaResponse pessoa) {
-		
-		pessoaService.salvarPessoa(pessoa);
-		return null;
+	public ResponseEntity<PessoaResponse> salvar(PessoaResponse pessoa) {		
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.salvarPessoa(pessoa));
 	}
-
 	@Override
-	public PessoaResponse atualizar(PessoaResponse pessoa) {
-		pessoaService.atualizarPessoa(pessoa);
-		return null;
+	public ResponseEntity<PessoaResponse> atualizar(PessoaResponse pessoa) {
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.atualizarPessoa(pessoa));
 	}
-
 	@Override
-	public List<PessoaResponse> consultar() {
-		pessoaService.consultarPessoa();
-		return null;
+	public ResponseEntity<List<PessoaResponse>> consultar() {
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.consultarPessoa());
 	}
-
 	@Override
-	public PessoaResponse buscar(Integer codigo) {
-		pessoaService.buscarPessoa(codigo);
-		return null;
+	public ResponseEntity<PessoaResponse> buscar(Integer codigo) {
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.buscarPessoa(codigo));
 	}
-
 	@Override
-	public PessoaResponse excluir(Integer codigo) {
-		pessoaService.excluirPessoa(codigo);
-		return null;
+	public ResponseEntity<PessoaResponse> excluir(Integer codigo) {
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.excluirPessoa(codigo));
 	}
-
 }
