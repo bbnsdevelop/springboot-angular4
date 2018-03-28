@@ -4,11 +4,13 @@ public class PessoaResponse {
 
 	private int codigo;
 	private String mensagem;
+	private Boolean ativo;
 
 	public PessoaResponse() {
 	}
 
 	public PessoaResponse(int codigo, String mensagem) {
+		this.ativo = false;
 		this.codigo = codigo;
 		this.mensagem = mensagem;
 	}
@@ -27,6 +29,14 @@ public class PessoaResponse {
 
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }

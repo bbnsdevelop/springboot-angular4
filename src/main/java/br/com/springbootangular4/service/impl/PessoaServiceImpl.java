@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import br.com.springbootangular4.builder.PessoaEntityBuilder;
+import br.com.springbootangular4.builder.PessoaResponseBuilder;
 import br.com.springbootangular4.entities.PessoaEntity;
 import br.com.springbootangular4.repositories.PessoaRepository;
 import br.com.springbootangular4.rest.response.PessoaResponse;
@@ -16,8 +18,15 @@ public class PessoaServiceImpl implements PessoaService{
 	 
 	@Override
 	public PessoaResponse salvarPessoa(PessoaResponse pessoaResponse) {
-		// TODO Auto-generated method stub
-		return null;
+		PessoaEntityBuilder build = PessoaEntityBuilder.create()
+			.nome(pessoaResponse.getMensagem())
+			.ativo(pessoaResponse.getAtivo());		
+		PessoaEntity pessoa = pessoaRepository.save(build.build());
+		PessoaResponseBuilder buildResponse = PessoaResponseBuilder.create()
+				.ativo(pessoa.isAtivo())
+				.codigo(pessoa.getCodigo())
+				.nome(pessoa.getNome());
+		return buildResponse.build();
 	}
 
 	@Override

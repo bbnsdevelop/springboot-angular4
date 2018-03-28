@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class PessoaController implements PessoaResouce{
 	private PessoaService pessoaService;
 
 	@Override
-	public ResponseEntity<PessoaResponse> salvar(PessoaResponse pessoa) {		
+	public ResponseEntity<PessoaResponse> salvar(@RequestBody PessoaResponse pessoa) {		
 		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.salvarPessoa(pessoa));
 	}
 	@Override

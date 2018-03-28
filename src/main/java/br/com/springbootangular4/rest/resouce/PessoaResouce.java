@@ -14,9 +14,7 @@ import br.com.springbootangular4.rest.response.PessoaResponse;
 
 public interface PessoaResouce {
 	@ResponseBody
-	@RequestMapping(value="/pessoa", method = RequestMethod.POST, 	
-									 consumes=MediaType.APPLICATION_JSON_UTF8_VALUE,
-									 produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/pessoa", method = RequestMethod.POST) 	
 	public ResponseEntity<PessoaResponse> salvar(@RequestBody PessoaResponse pessoa);
 	
 	@ResponseBody
