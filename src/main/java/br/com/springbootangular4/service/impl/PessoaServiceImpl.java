@@ -9,6 +9,7 @@ import br.com.springbootangular4.builder.PessoaEntityBuilder;
 import br.com.springbootangular4.builder.PessoaResponseBuilder;
 import br.com.springbootangular4.entities.PessoaEntity;
 import br.com.springbootangular4.repositories.PessoaRepository;
+import br.com.springbootangular4.rest.request.PessoaRequest;
 import br.com.springbootangular4.rest.response.PessoaResponse;
 import br.com.springbootangular4.service.PessoaService;
 
@@ -19,11 +20,11 @@ public class PessoaServiceImpl implements PessoaService{
 	private PessoaRepository pessoaRepository;
 	 
 	@Override
-	public PessoaResponse salvarPessoa(PessoaResponse pessoaResponse) {
-		PessoaEntityBuilder build = PessoaEntityBuilder.create()
-			.nome(pessoaResponse.getMensagem())
-			.ativo(pessoaResponse.getAtivo());		
-		PessoaEntity pessoa = pessoaRepository.save(build.build());
+	public PessoaResponse salvarPessoa(PessoaRequest pessoarequest) {
+		PessoaEntityBuilder buildRequest = PessoaEntityBuilder.create()
+			.nome(pessoarequest.getMensagem())
+			.ativo(pessoarequest.getAtivo());		
+		PessoaEntity pessoa = pessoaRepository.save(buildRequest.build());
 		PessoaResponseBuilder buildResponse = PessoaResponseBuilder.create()
 				.ativo(pessoa.isAtivo())
 				.codigo(pessoa.getCodigo())
@@ -32,7 +33,7 @@ public class PessoaServiceImpl implements PessoaService{
 	}
 
 	@Override
-	public PessoaResponse atualizarPessoa(PessoaResponse pessoaResponse) {
+	public PessoaResponse atualizarPessoa(PessoaRequest pessoarequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
